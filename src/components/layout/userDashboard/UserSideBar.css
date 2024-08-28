@@ -1,0 +1,24 @@
+.dashNav {
+  color: #0a0101;
+  transition: all linear 0.3s;
+}
+
+.dashNav:hover {
+  color: rgb(19, 16, 16);
+}
+
+.dashLi .active {
+  background-color: #ff5733;
+  color: white; /* Ensure text color is white */
+  font-weight: 700;
+  padding-left: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.dashLi .active .dashIcon {
+  color: #ff5733; /* Ensure icon color matches background */
+}
+.dashLi .active .dashIcon {
+  color: white; /* Ensure icon color matches background */
+}
