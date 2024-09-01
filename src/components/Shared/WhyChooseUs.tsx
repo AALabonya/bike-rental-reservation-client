@@ -7,14 +7,7 @@ import {
   FaHeadset,
 } from "react-icons/fa";
 import PageTitleForHome from "./PageTitleForHome";
-import {
-  Fade,
-  Flip,
-  Hinge,
-  JackInTheBox,
-  Slide,
-  Zoom,
-} from "react-awesome-reveal";
+import { Fade, JackInTheBox, Slide, Zoom } from "react-awesome-reveal";
 
 function WhyChooseUs() {
   return (

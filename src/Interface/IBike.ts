@@ -1,4 +1,5 @@
 export type IBike = {
+  id: Key | null | undefined;
   _id: string;
   name: string;
   description: string;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { setRentalData } from "@/redux/features/rentals/rentalSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
 import { IRental } from "@/Interface/TRental";
 import { useGetAllCouponsQuery } from "@/redux/features/couponApi";
 import toast from "react-hot-toast";
@@ -18,11 +18,7 @@ const CouponPayment = ({ rental, open, onClose }: CouponPaymentDialogProps) => {
   const navigate = useNavigate();
   const [discountCost, setDiscountCost] = useState<number>(0); // Initialize to 0
 
-  const {
-    data: couponsData,
-    isLoading,
-    isError,
-  } = useGetAllCouponsQuery(undefined);
+  const { data: couponsData } = useGetAllCouponsQuery(undefined);
 
   const {
     register,
@@ -61,17 +57,16 @@ const CouponPayment = ({ rental, open, onClose }: CouponPaymentDialogProps) => {
         // Calculate discount
         const discountAmount = (totalCost * discountPercentage) / 100;
         const finalAmount = totalCost - discountAmount;
-        console.log(finalAmount);
 
         // Update the discountCost state
-        setDiscountCost(finalAmount);
+        setDiscountCost(Math.max(finalAmount, 0));
 
         const rentalData = {
           bikeId: rental._id,
           amount: finalAmount,
           isBooking: false,
           totalCost: rental?.totalCost,
-          discountCost: finalAmount,
+          discountCost: Number(finalAmount),
         };
 
         dispatch(setRentalData(rentalData));

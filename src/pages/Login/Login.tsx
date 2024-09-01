@@ -31,7 +31,7 @@ const Login: FC = () => {
     if (isSuccess) {
       toast.success("User Logged In Successfully");
       // navigate("/userDash");
-      navigate("/");
+      navigate("/userDash");
     }
   }, [isSuccess, navigate]);
 

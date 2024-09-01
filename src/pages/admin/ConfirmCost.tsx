@@ -38,10 +38,10 @@ const ConfirmCost = ({ id, open, onClose }: ConfirmCostDialogProps) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white rounded-lg shadow-lg max-w-lg w-full p-6">
         <div className="mb-4">
-          <h2 className="text-xl font-semibold">Confirm Calculate Cost</h2>
-          <p className="mt-2 text-gray-600">
+          <h2 className="text-xl font-semibold"> Calculate Cost</h2>
+          {/* <p className="mt-2 text-gray-600">
             Are you sure you want to confirm the cost for returning the rental?
-          </p>
+          </p> */}
         </div>
         <div className="flex justify-end space-x-4 mt-6">
           <button

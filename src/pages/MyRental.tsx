@@ -10,7 +10,6 @@ const MyRentals: FC = () => {
   const [couponDialogOpen, setCouponDialogOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<string>("unpaid");
   const [selectedRental, setSelectedRental] = useState<any>(null);
-  const [currentPage, setCurrentPage] = useState<number | undefined>(1);
 
   const {
     data: allRentals,
@@ -184,24 +183,6 @@ const MyRentals: FC = () => {
                 </tbody>
               </table>
             </div>
-
-            {/*} <div className="mt-6">
-              <div className="flex justify-center">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className="px-4 py-2 mx-2 bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded disabled:opacity-50"
-                >
-                  Previous
-                </button>
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  className="px-4 py-2 mx-2 bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded"
-                >
-                  Next
-                </button>
-              </div>
-            </div>*/}
 
             <CouponPayment
               rental={selectedRental}

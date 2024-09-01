@@ -25,8 +25,6 @@ import { JwtPayload } from "jwt-decode";
 import toast from "react-hot-toast";
 
 const SideBar = () => {
-  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-  const [isDropDownOpen2, setIsDropDownOpen2] = useState(false);
   const token = useAppSelector(selectCurrentToken);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

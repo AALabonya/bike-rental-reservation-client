@@ -62,11 +62,12 @@ const PaymentForm: FC = () => {
 
     try {
       const paymentData = {
-        amount: rentalData.amount,
+        amount: Number(rentalData.amount),
         currency: "bdt",
       };
 
       const { data: secretData } = await cratePaymentIntent(paymentData);
+      console.log(secretData);
 
       const card = elements.getElement(CardNumberElement);
       if (!secretData || !secretData.data) {
@@ -147,7 +148,7 @@ const PaymentForm: FC = () => {
               htmlFor="card-number"
               className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
             >
-              Card number*
+              CARD NUMBER
             </label>
             <CardNumberElement
               id="card-number"
@@ -164,7 +165,7 @@ const PaymentForm: FC = () => {
               htmlFor="expire-date"
               className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
             >
-              Card expiration*
+              CARD EXPIRATION
             </label>
             <CardExpiryElement
               id="expire-date"
@@ -176,7 +177,7 @@ const PaymentForm: FC = () => {
               htmlFor="cvc"
               className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
             >
-              CVC*
+              CVC
             </label>
             <CardCvcElement
               id="cvc"
