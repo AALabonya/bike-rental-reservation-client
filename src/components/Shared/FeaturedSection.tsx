@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Zoom } from "react-awesome-reveal";
-
-export default function FeaturedSection({ bike }) {
+import { IBike } from "@/Interface/IBike";
+interface FeaturedSectionProps {
+  bike: IBike;
+}
+export default function FeaturedSection({ bike }: FeaturedSectionProps) {
   console.log(bike);
 
   const navigate = useNavigate();

@@ -6,7 +6,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
-
+interface ApiError {
+  message: string;
+}
 const BikeDetails = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -35,7 +37,9 @@ const BikeDetails = () => {
   }
 
   if (isError) {
-    return <div>Error: {error.message || "Unable to fetch bike details"}</div>;
+    const errorMessage =
+      (error as ApiError)?.message || "Unable to fetch bike details";
+    return <div>Error: {errorMessage}</div>;
   }
 
   // Ensure bike data is available

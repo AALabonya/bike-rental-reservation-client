@@ -1,11 +1,23 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import {
   useGetSingleBikeQuery,
   useUpdateBikeMutation,
 } from "@/redux/features/bikes/bikeApi";
 import toast from "react-hot-toast";
+interface BikeFormData {
+  name: string;
+  isAvailable: boolean;
+  brand: string;
+  model: string;
+  year: number;
+  description: string;
+  engineType: string;
+  pricePerHour: number;
+  cc: number;
+  maximumSpeed: string;
+}
 
 const UpdateBike = () => {
   const { id } = useParams(); // Get the bike ID from the URL parameters
@@ -18,7 +30,7 @@ const UpdateBike = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<BikeFormData>({
     defaultValues: {
       name: "",
       isAvailable: true,
@@ -51,7 +63,7 @@ const UpdateBike = () => {
     }
   }, [bikeData, reset]);
 
-  const onSubmit = async (data: any) => {
+  const onSubmit: SubmitHandler<BikeFormData> = async (data) => {
     const updatedData = {
       ...data,
       pricePerHour: Number(data.pricePerHour),
