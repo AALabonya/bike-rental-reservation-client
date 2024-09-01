@@ -1,5 +1,4 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { FaMotorcycle } from "react-icons/fa";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
 import { SiNginxproxymanager } from "react-icons/si";
@@ -24,12 +23,16 @@ import verifyToken from "@/utils/verify_token";
 import { JwtPayload } from "jwt-decode";
 import toast from "react-hot-toast";
 
+export interface CustomJwtPayload extends JwtPayload {
+  role: "admin" | "user";
+}
+
 const SideBar = () => {
   const token = useAppSelector(selectCurrentToken);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const { role } = verifyToken(token as string) as JwtPayload;
+  const { role } = verifyToken(token as string) as CustomJwtPayload;
 
   const handleLogout = () => {
     dispatch(logOut());

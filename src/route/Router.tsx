@@ -24,7 +24,6 @@ import Comparision from "@/pages/Comparision";
 import CouponManagement from "@/pages/admin/CouponManagement";
 import NotFound from "@/pages/Not_Found/NotFound";
 import ErrorHandler from "@/pages/ErrorHandler";
-import Confirmation from "@/pages/Confirmation";
 import PaymentPage from "@/pages/Payment";
 
 const router = createBrowserRouter([

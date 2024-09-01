@@ -51,7 +51,7 @@ const UpdateBike = () => {
     }
   }, [bikeData, reset]);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     const updatedData = {
       ...data,
       pricePerHour: Number(data.pricePerHour),

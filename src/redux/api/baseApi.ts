@@ -1,5 +1,4 @@
 import {
-  BaseQueryApi,
   BaseQueryFn,
   createApi,
   FetchArgs,
@@ -7,7 +6,7 @@ import {
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
-import { logOut } from "../features/auth/authSlice";
+
 import toast from "react-hot-toast";
 import config from "@/config";
 
@@ -33,17 +32,19 @@ const baseQueryWithNoRefreshToken: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   // Check the response for error status
-  if (result?.error?.status === 401) {
-    // Log the error for debugging purposes
-    console.error("Unauthorized access. Error details:", result.error);
-    toast.error("Session expired. Please log in again.");
-  } else if (result?.error?.status === 404) {
-    toast.error("Resource not found.");
-  } else if (result?.error) {
-    // Handle other possible errors
-    toast.error(
-      result.error.data?.message || "An error occurred. Please try again."
-    );
+  if (result?.error) {
+    if (result.error.status === 401) {
+      // Log the error for debugging purposes
+      console.error("Unauthorized access. Error details:", result.error);
+      toast.error("Session expired. Please log in again.");
+    } else if (result.error.status === 404) {
+      toast.error("Resource not found.");
+    } else {
+      // Handle other possible errors
+      // Ensure `result.error.data` is checked for its existence
+      const message = (result.error.data as { message?: string })?.message;
+      toast.error(message || "An error occurred. Please try again.");
+    }
   }
 
   return result;
