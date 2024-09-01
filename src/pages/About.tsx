@@ -1,7 +1,6 @@
 import OurTeam from "@/components/Shared/OurTeam";
 import PageTitleForHome from "@/components/Shared/PageTitleForHome";
-import { url } from "inspector";
-import { Link, NavLink } from "react-router-dom";
+
 import {
   FaBicycle,
   FaGlobe,

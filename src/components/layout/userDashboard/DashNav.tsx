@@ -6,11 +6,25 @@ import { LayoutDashboard, User } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import toast from "react-hot-toast";
 import { logOut } from "@/redux/features/auth/authSlice";
+interface DashNavProps {
+  toggleSidebar: () => void;
+}
+export interface IUser {
+  name?: string;
+  role?: string;
+  avatar?: string;
+}
 
-const DashNav = ({ toggleSidebar }: any) => {
+export interface IAuthState {
+  token: string | null;
+  user: IUser | null;
+}
+const DashNav = ({ toggleSidebar }: DashNavProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const token = useAppSelector((state) => state.auth.token);
-  const user = useAppSelector((state) => state.auth.user);
+  const token = useAppSelector(
+    (state: { auth: IAuthState }) => state.auth.token
+  );
+  const user = useAppSelector((state: { auth: IAuthState }) => state.auth.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
