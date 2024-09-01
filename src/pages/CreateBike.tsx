@@ -283,6 +283,7 @@
 // };
 
 // export default CreateBike;
+import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 import { useCreateBikeMutation } from "@/redux/features/bikes/bikeApi";
 import {
   useForm,
@@ -339,17 +340,16 @@ const CreateBike = () => {
   };
   return (
     <div className="w-full p-8">
+      <div className="">
+        <PageTitleForHome title="Create Bike" />
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="md:col-span-2">
             <div className="p-6 bg-white shadow rounded-lg">
-              <h2 className="text-2xl font-semibold mb-2">Upload A Bike</h2>
-              <p className="text-gray-600 mb-6">
-                Add the details of a bike and upload the bike
-              </p>
               <div className="grid gap-6">
                 <div className="grid gap-2">
-                  <label className="font-medium">Bike Title</label>
+                  <label className="font-medium text-black">Bike Title</label>
                   <Controller
                     name="name"
                     control={control}
@@ -376,7 +376,7 @@ const CreateBike = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="grid gap-2">
-                    <label className="font-medium">Bike Brand</label>
+                    <label className="font-medium text-black">Bike Brand</label>
                     <Controller
                       name="brand"
                       control={control}
@@ -385,7 +385,7 @@ const CreateBike = () => {
                         <div>
                           <select
                             {...field}
-                            className={`p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500 ${
+                            className={`p-2 border border-gray-300 text-black rounded focus:outline-none focus:ring focus:border-blue-500 ${
                               fieldState.error ? "border-red-500" : ""
                             }`}
                           >

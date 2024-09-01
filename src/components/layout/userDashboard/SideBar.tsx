@@ -55,18 +55,18 @@ const SideBar = () => {
         </span>
         <p className="border mt-8 mb-2"></p>
 
-        <nav className="grid md:grid-cols-1 grid-cols-1 items-start px-2 text-base font-medium lg:px-4">
+        <nav className="grid md:grid-cols-1 grid-cols-1 items-start px-2 text-[15px] font-semibold lg:px-2">
           {/* Routes for users */}
           <NavLink
             to="/userDash"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+            className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
           >
             <LayoutDashboard size={22} />
             Dashboard
           </NavLink>
           <NavLink
             to="/userDash/profile"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+            className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
           >
             <CircleUser size={22} />
             Profile
@@ -77,35 +77,35 @@ const SideBar = () => {
             <>
               <NavLink
                 to="/userDash/bike-management"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+                className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
               >
                 <SiNginxproxymanager size={22} />
                 Bike Management
               </NavLink>
               <NavLink
                 to="/userDash/user-management"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+                className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
               >
                 <Users size={22} />
                 User Management
               </NavLink>
               <NavLink
                 to="/userDash/create-bike"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+                className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
               >
                 <VscGitPullRequestCreate size={22} />
                 Create Bikes
               </NavLink>
               <NavLink
                 to="/userDash/return-bike"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+                className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
               >
                 <Handshake size={22} />
                 Return Bikes
               </NavLink>
               <NavLink
                 to="/userDash/coupon-management"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+                className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
               >
                 <SiNginxproxymanager size={22} />
                 Coupon Management
@@ -118,22 +118,25 @@ const SideBar = () => {
           {/* Routes for both admin and user */}
           <NavLink
             to="/bikes"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+            className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
           >
             <FaMotorcycle size={25} />
             All Bikes
           </NavLink>
-          <NavLink
-            to="/userDash/rental"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
-          >
-            <ListChecks size={22} />
-            My Rentals
-          </NavLink>
+          {/* Routes for both admin and user */}
+          {role !== "admin" && (
+            <NavLink
+              to="/userDash/rental"
+              className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+            >
+              <ListChecks size={22} />
+              My Rentals
+            </NavLink>
+          )}
 
           <NavLink
             to="/"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+            className="flex items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
             onClick={handleLogout}
           >
             <LogOut size={22} />

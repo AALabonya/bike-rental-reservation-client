@@ -18,8 +18,11 @@ const Home = () => {
   const [displayedBikes, setDisplayedBikes] = useState<IBike[]>([]);
 
   useEffect(() => {
-    // Display all bikes initially
-    setDisplayedBikes(allBikes?.data || []);
+    // Filter to display only bikes that are available
+    const availableBikes = (allBikes?.data || []).filter(
+      (bike) => bike.isAvailable === true
+    );
+    setDisplayedBikes(availableBikes);
   }, [allBikes]);
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +31,8 @@ const Home = () => {
 
     // Filter bikes based on the search query and availability
     const filteredBikes = (allBikes?.data || []).filter(
-      (bike) => bike.isAvailable && bike.name.toLowerCase().includes(query)
+      (bike) =>
+        bike.isAvailable === true && bike.name.toLowerCase().includes(query)
     );
 
     setDisplayedBikes(filteredBikes);

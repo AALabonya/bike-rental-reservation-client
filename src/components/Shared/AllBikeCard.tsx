@@ -23,11 +23,22 @@ export default function AllBikeCard({ bike }: BikeCardProps) {
           alt={bike.name || "Bike Image"}
         />
         <div className="p-5 space-y-6">
-          <div className="flex flex-col space-y-1.5">
-            <h3 className="text-2xl font-semibold ">{bike.name}</h3>
-            <p className="text-sm text-gray-500 dark:text-white/60">
-              {bike.description}
-            </p>
+          <div className="flex  justify-between space-y-1.5">
+            <div>
+              <h3 className="text-2xl font-semibold ">{bike.name}</h3>
+              <p className="text-sm text-gray-500 dark:text-white/60">
+                {bike.description}
+              </p>
+            </div>
+            <div
+              className={`px-3 h-8 rounded pt-1 ${
+                bike.isAvailable
+                  ? "bg-green-500 text-white"
+                  : "bg-red-500 text-white"
+              }`}
+            >
+              {bike.isAvailable ? "Available" : "Unavailable"}
+            </div>
           </div>
           <div className="grid grid-cols-2">
             <div className="flex gap-3 items-center">

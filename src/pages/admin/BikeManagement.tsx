@@ -9,6 +9,7 @@ import {
   useDeleteBikeMutation,
   useGetBikeQuery,
 } from "@/redux/features/bikes/bikeApi";
+import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 
 const BikeManagement = () => {
   const { data: bikeData, isLoading } = useGetBikeQuery(undefined);
@@ -34,19 +35,17 @@ const BikeManagement = () => {
 
   return (
     <div className="p-4">
+      <div className="">
+        <PageTitleForHome title="Bike Management" />
+      </div>
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
-        <div className="p-4 border-b">
-          <h2 className="text-lg font-semibold tracking-wider">Manage Bike</h2>
-          <p className="text-sm text-gray-500">
-            Manage your Bike and view their sales performance.
-          </p>
-        </div>
         <div className="p-4 overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
                 <th className="w-[100px] hidden sm:table-cell">Image</th>
                 <th className="text-left px-4 py-2">Name</th>
+                <th className="text-left px-4 py-2">Availability</th>
                 <th className="text-left px-4 py-2">Brand</th>
                 <th className="text-left px-4 py-2">Bike CC</th>
                 <th className="hidden md:table-cell text-left px-4 py-2">
@@ -71,6 +70,27 @@ const BikeManagement = () => {
                     />
                   </td>
                   <td className="p-4 font-medium">{bike.name}</td>
+                  {/* <td> <span
+                      className={`inline-block px-2 py-1 rounded-full text-white ${
+                        bike.isAvailable ? === "Available" ? "bg-green-500" : "bg-gray-500"
+                      }`}
+                    >
+            
+                    {bike.isAvailable ? "Available" : "Not Available"}
+                    </span>
+                  </td> */}
+                  <td className="hidden md:table-cell px-4 py-2 text-sm text-gray-700">
+                    <span
+                      className={`inline-block px-2 py-1 rounded-full text-white ${
+                        bike.isAvailable === true
+                          ? "bg-green-500"
+                          : "bg-gray-500"
+                      }`}
+                    >
+                      {bike.isAvailable ? "Available" : "Not Available"}
+                    </span>
+                  </td>
+
                   <td className="p-4 capitalize">{bike.brand}</td>
                   <td className="p-4">{bike.cc} CC</td>
                   <td className="hidden md:table-cell p-4">

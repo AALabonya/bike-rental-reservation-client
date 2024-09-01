@@ -451,11 +451,11 @@ const Navbar = () => {
                   <ul>
                     <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center">
                       <LayoutDashboard className="mr-2 h-4 w-4" />
-                      <NavLink to={"/dashboard"}>Dashboard</NavLink>
+                      <NavLink to={"/userDash"}>Dashboard</NavLink>
                     </li>
                     <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center">
                       <User className="mr-2 h-4 w-4" />
-                      <NavLink to={"/dashboard/my-profile"}>Profile</NavLink>
+                      <NavLink to={"/userDash/profile"}>Profile</NavLink>
                     </li>
                     <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center pb-5">
                       <Link

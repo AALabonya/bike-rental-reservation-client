@@ -1,3 +1,4 @@
+import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 import { useGetMeQuery } from "@/redux/features/user/userApi";
 import {
   Camera,
@@ -35,7 +36,10 @@ const Profile = () => {
 
   return (
     <div className="p-4">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-gray-800">
+      <div className="">
+        <PageTitleForHome title="My Profile" />
+      </div>
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-black">
         <div className="relative">
           <img
             src="https://i.ibb.co/GVnJgFf/breadcrumb.jpg"
@@ -54,7 +58,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="relative -mt-20 px-4 pb-6 text-center">
-          <div className="relative mx-auto -mt-16 w-32 h-32 bg-white p-1 rounded-full shadow-lg dark:bg-gray-800">
+          <div className="relative mx-auto -mt-16 w-32 h-32 bg-white dark:bg-black p-1 rounded-full shadow-lg dark:bg-dark">
             <img
               src="https://i.ibb.co/nCsNfNW/doctor1.webp"
               alt="profile"
@@ -84,7 +88,7 @@ const Profile = () => {
             </p>
 
             <div className="mt-10">
-              <div className="bg-white shadow-md rounded-lg">
+              <div className="bg-white shadow-md rounded-lg ">
                 <div className="flex items-center justify-between p-4">
                   <NavLink
                     to="/userDash/edit-profile"
@@ -96,7 +100,7 @@ const Profile = () => {
                 </div>
                 <div className="p-4 flex gap-6">
                   <div className="flex-1">
-                    <p className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                    <p className="flex items-center gap-2 text-black dark:text-gray-300">
                       <User size={20} />
                       <span>{user.name}</span>
                     </p>

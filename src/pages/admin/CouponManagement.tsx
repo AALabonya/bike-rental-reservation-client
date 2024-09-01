@@ -249,6 +249,7 @@ import { CreateCouponModal } from "./CreateCoupon";
 import { useState } from "react";
 import { MoreHorizontal } from "lucide-react";
 import { ICoupon } from "@/Interface/TCoupon";
+import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 
 export type TCoupon = {
   _id: string;
@@ -320,7 +321,10 @@ const CouponManagement = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="">
+      <div className="pt-9">
+        <PageTitleForHome title="Return Bike Management" />
+      </div>
       <div className="flex justify-end mb-4">
         <CreateCouponModal />
       </div>
@@ -334,7 +338,7 @@ const CouponManagement = () => {
       ) : (
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-white ">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   NO:

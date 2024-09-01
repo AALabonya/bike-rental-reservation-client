@@ -6,6 +6,7 @@ import {
   useUpdateUserToAdminMutation,
 } from "@/redux/features/user/userApi";
 import toast from "react-hot-toast";
+import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 
 const UserManagement = () => {
   const {
@@ -83,10 +84,10 @@ const UserManagement = () => {
 
   return (
     <div className="p-4">
+      <div className="">
+        <PageTitleForHome title="User Management" />
+      </div>
       <div className="shadow-md border border-gray-200 rounded-lg">
-        <div className="p-4 border-b border-gray-200">
-          <h1 className="text-2xl font-semibold text-gray-900">Manage User</h1>
-        </div>
         <div className="p-4">
           <table className="min-w-full divide-y divide-gray-200">
             <thead>
@@ -125,7 +126,7 @@ const UserManagement = () => {
                     />
                   </td>
                   <td className="px-4 py-2 text-sm font-medium text-gray-900">
-                    {user.firstName} {user.lastName}
+                    {user.name}
                   </td>
                   <td className="px-4 py-2 text-sm text-gray-700">
                     {user.email}

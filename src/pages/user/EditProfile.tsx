@@ -37,7 +37,7 @@ const EditProfile = () => {
 
   return (
     <div className="p-4">
-      <div className="bg-white shadow-lg rounded-lg p-6 dark:bg-gray-800">
+      <div className="bg-white shadow-lg rounded-lg p-6 dark:bg-black">
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
           Edit Profile
         </h2>
@@ -104,7 +104,7 @@ const EditProfile = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            className="bg-red-500 w-full text-white py-2 px-4 rounded hover:bg-blue-600"
             disabled={isUpdating}
           >
             {isUpdating ? "Updating..." : "Save Changes"}
