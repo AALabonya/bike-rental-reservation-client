@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 
 const UpdateBike = () => {
   const { id } = useParams(); // Get the bike ID from the URL parameters
-  const { data: bikeData, isLoading } = useGetSingleBikeQuery(id); // Fetch the bike data by ID
+  const { data: bikeData, isLoading, refetch } = useGetSingleBikeQuery(id); // Fetch the bike data by ID
 
   const [updateBike] = useUpdateBikeMutation();
   const navigate = useNavigate();
@@ -38,13 +38,13 @@ const UpdateBike = () => {
       // Reset the form with the fetched bike data
       reset({
         name: bikeData?.data?.name || "",
-        isAvailable: bikeData?.data?.isAvailable ?? true, // Handle optional boolean
+        isAvailable: bikeData?.data?.isAvailable ?? true,
         brand: bikeData?.data?.brand || "",
         model: bikeData?.data?.model || "",
-        year: bikeData?.data?.year || 0, // Default to 0 if not provided
+        year: bikeData?.data?.year || 0,
         engineType: bikeData?.data?.engineType || "",
-        pricePerHour: bikeData?.data?.pricePerHour || 0, // Default to 0 if not provided
-        cc: bikeData?.data?.cc || 0, // Default to 0 if not provided
+        pricePerHour: bikeData?.data?.pricePerHour || 0,
+        cc: bikeData?.data?.cc || 0,
         description: bikeData?.data?.description || "",
         maximumSpeed: bikeData?.data?.maximumSpeed || "",
       });
@@ -60,8 +60,11 @@ const UpdateBike = () => {
     };
     try {
       await updateBike({ id, ...updatedData }).unwrap();
+      await refetch();
       toast.success("Bike updated successfully!");
+
       navigate("/userDash/bike-management");
+      window.location.reload();
     } catch (error) {
       console.error("Update failed:", error);
       toast.error("Failed to update bike.");
@@ -109,8 +112,8 @@ const UpdateBike = () => {
                     {...field}
                     className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   >
-                    <option value={true}>Available</option>
-                    <option value={false}>Not Available</option>
+                    <option value="true">Available</option>
+                    <option value="false">Not Available</option>
                   </select>
                 )}
               />

@@ -103,6 +103,13 @@ const SideBar = () => {
                 <Handshake size={22} />
                 Return Bikes
               </NavLink>
+              <NavLink
+                to="/userDash/coupon-management"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+              >
+                <SiNginxproxymanager size={22} />
+                Coupon Management
+              </NavLink>
             </>
           )}
 

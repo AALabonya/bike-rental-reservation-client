@@ -8,9 +8,6 @@ import {
 } from "lucide-react";
 import "./WheelSpin.css";
 import { motion } from "framer-motion";
-
-import { useAppSelector } from "@/redux/hooks";
-import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import toast from "react-hot-toast";
 
 import { useNavigate } from "react-router-dom";
@@ -23,9 +20,6 @@ type Coupon = {
 };
 
 export default function WheelSpin() {
-  const currentUser = useAppSelector(selectCurrentUser);
-  const role = currentUser ? currentUser.role : null;
-
   const [selectedCoupon, setSelectedCoupon] = useState<Coupon | null>(null);
   const [isSpinning, setIsSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
