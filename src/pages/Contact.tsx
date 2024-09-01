@@ -3,7 +3,7 @@ import { IoIosSend } from "react-icons/io";
 import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 export default function Contact() {
   return (
-    <div className="py-24">
+    <div className="">
       <div className=" mb-10">
         <PageTitleForHome title="Contact with coxRide" />
       </div>

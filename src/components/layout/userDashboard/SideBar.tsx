@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaMotorcycle } from "react-icons/fa";
 import { VscGitPullRequestCreate } from "react-icons/vsc";
@@ -18,10 +18,26 @@ import {
   LogOut,
   Users,
 } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { logOut, selectCurrentToken } from "@/redux/features/auth/authSlice";
+import verifyToken from "@/utils/verify_token";
+import { JwtPayload } from "jwt-decode";
+import toast from "react-hot-toast";
 
 const SideBar = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [isDropDownOpen2, setIsDropDownOpen2] = useState(false);
+  const token = useAppSelector(selectCurrentToken);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const { role } = verifyToken(token as string) as JwtPayload;
+
+  const handleLogout = () => {
+    dispatch(logOut());
+    toast.success("User logged out successfully!");
+    navigate("/");
+  };
 
   const sideLinks = (
     <>
@@ -42,16 +58,16 @@ const SideBar = () => {
         <p className="border mt-8 mb-2"></p>
 
         <nav className="grid md:grid-cols-1 grid-cols-1 items-start px-2 text-base font-medium lg:px-4">
-          {/* Routes for users and admins */}
+          {/* Routes for users */}
           <NavLink
-            to="userDash"
+            to="/userDash"
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
           >
             <LayoutDashboard size={22} />
             Dashboard
           </NavLink>
           <NavLink
-            to="userDash/my-profile"
+            to="/userDash/profile"
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
           >
             <CircleUser size={22} />
@@ -59,36 +75,42 @@ const SideBar = () => {
           </NavLink>
 
           {/* Routes for admins */}
-          <NavLink
-            to="userDash/bike-management"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
-          >
-            <SiNginxproxymanager size={22} />
-            Bike Management
-          </NavLink>
-          <NavLink
-            to="/userDash/user-management"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
-          >
-            <Users size={22} />
-            User Management
-          </NavLink>
-          <NavLink
-            to="/userDash/create-bike"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
-          >
-            <VscGitPullRequestCreate size={22} />
-            Create Bikes
-          </NavLink>
-          <NavLink
-            to="/userDash/return-bike"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
-          >
-            <Handshake size={22} />
-            Return Bikes
-          </NavLink>
+          {role === "admin" && (
+            <>
+              <NavLink
+                to="/userDash/bike-management"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+              >
+                <SiNginxproxymanager size={22} />
+                Bike Management
+              </NavLink>
+              <NavLink
+                to="/userDash/user-management"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+              >
+                <Users size={22} />
+                User Management
+              </NavLink>
+              <NavLink
+                to="/userDash/create-bike"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+              >
+                <VscGitPullRequestCreate size={22} />
+                Create Bikes
+              </NavLink>
+              <NavLink
+                to="/userDash/return-bike"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+              >
+                <Handshake size={22} />
+                Return Bikes
+              </NavLink>
+            </>
+          )}
+
           <p className="border mt-8 mb-2"></p>
-          {/* Routes for users */}
+
+          {/* Routes for both admin and user */}
           <NavLink
             to="/bikes"
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
@@ -97,17 +119,17 @@ const SideBar = () => {
             All Bikes
           </NavLink>
           <NavLink
-            to="/bikes"
+            to="/userDash/rental"
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
           >
             <ListChecks size={22} />
             My Rentals
           </NavLink>
 
-          {/* Route for both admin and user */}
           <NavLink
             to="/"
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-green hover:bg-accent-foreground hover:text-white"
+            onClick={handleLogout}
           >
             <LogOut size={22} />
             Log Out
@@ -137,7 +159,7 @@ const SideBar = () => {
   );
 
   return (
-    <div className="w-full shadow-lg xl:min-w-[300px] min-h-screen flex flex-col overflow-auto h-[100vh]">
+    <div className="w-full shadow-lg xl:min-w-[300px] min-h-screen flex flex-col overflow-auto h-[100vh] bg-white">
       <div className="flex items-center ml-5">
         <Link to="/">
           <div className="flex items-center">

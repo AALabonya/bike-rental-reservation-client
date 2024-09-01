@@ -1,0 +1,73 @@
+.wheel-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.wheel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 8px solid #da1010;
+  transition: transform 5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.wheel-segment {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  overflow: hidden;
+  transform-origin: 100% 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wheel-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  transform: rotate(45deg);
+  font-size: 8px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Adjustments for smaller devices */
+@media (max-width: 600px) {
+  .wheel-container {
+    max-width: 200px;
+  }
+
+  .wheel-text {
+    font-size: 3.5vw; /* Further scale down text */
+  }
+}
+@media (max-width: 300px) {
+  .wheel-container {
+    max-width: 200px;
+  }
+
+  .wheel-text {
+    font-size: 3.5vw; /* Further scale down text */
+  }
+}
+/* Adjustments for larger devices */
+@media (min-width: 1200px) {
+  .wheel-container {
+    max-width: 400px;
+  }
+
+  .wheel-text {
+    font-size: 2vw; /* Scale text up slightly */
+  }
+}

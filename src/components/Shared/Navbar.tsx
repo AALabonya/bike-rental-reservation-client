@@ -1,12 +1,17 @@
+import { logOut } from "@/redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { LayoutDashboard, User } from "lucide-react";
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import { LuMenu, LuX } from "react-icons/lu";
+import { TbLogout } from "react-icons/tb";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // let loginStatus = localStorage.getItem("user") ? true : false;
-  // const [isLogin, setIsLogin] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to manage dropdown visibility
+  const token = useAppSelector((state) => state.auth.token);
 
   const [isDarkMode, setIsDarkMode] = useState(
     () => localStorage.getItem("theme") === "dark"
@@ -24,9 +29,19 @@ const Navbar = () => {
     }
   }, [isDarkMode]);
 
-  // useEffect(() => {
-  //   setIsLogin(loginStatus)
-  // }, []);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const handleLogout = async () => {
+    dispatch(logOut());
+    setIsDropdownOpen(false);
+    toast.success("Logout Successfully");
+    navigate("/");
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen); // Toggle dropdown visibility
+  };
 
   return (
     <div className="flex justify-center">
@@ -60,13 +75,18 @@ const Navbar = () => {
 
           <ul className="space-y-6 lg:space-y-0 lg:space-x-4 lg:flex lg:gap-x-2">
             <li className="group max-lg:border-b max-lg:py-3 px-3 relative">
-              <Link to="#" className={"navlink  font-semibold text-lg"}>
+              <Link to="/" className={"navlink  font-semibold text-lg"}>
                 Home
               </Link>
             </li>
             <li className="group max-lg:border-b max-lg:py-3 px-3 relative">
               <Link to="/bikes" className={"navlink  font-semibold text-lg"}>
                 All Bikes
+              </Link>
+            </li>
+            <li className="group max-lg:border-b max-lg:py-3 px-3 relative">
+              <Link to="/compare" className={"navlink  font-semibold text-lg"}>
+                Comparison
               </Link>
             </li>
             <li className="group max-lg:border-b max-lg:py-3 px-3 relative">
@@ -138,26 +158,65 @@ const Navbar = () => {
               </svg>
             </span>
           </label>
-
-          <Link to="/login">
-            <button className="flex items-center bg-red-500 text-white font-bold rounded-md px-5 py-2">
-              Login
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1.2rem"
-                height="1.2rem"
-                viewBox="0 0 16 16"
-                className="ml-2"
+          {token ? (
+            <div className="relative h-[65px]">
+              <div
+                tabIndex={0}
+                role="button"
+                className="relative font-medium text-base text-black mx-3 flex items-center h-full"
+                onClick={toggleDropdown}
               >
-                <path
-                  fill="white"
-                  fillRule="evenodd"
-                  d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
-                  clipRule="evenodd"
+                <img
+                  className="rounded-full max-w-[48px] max-h-[48px] border-2 border-red-500"
+                  src="https://i.ibb.co/pQcqj2B/henderson.png"
+                  alt="User profile"
                 />
-              </svg>
-            </button>
-          </Link>
+              </div>
+
+              {isDropdownOpen && (
+                <div className="absolute right-0 top-16 z-50 w-fit rounded-sm bg-white shadow-md py-4 pl-5 pr-6 space-y-4">
+                  <ul>
+                    <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center">
+                      <LayoutDashboard className="mr-2 h-4 w-4" />
+                      <NavLink to={"/dashboard"}>Dashboard</NavLink>
+                    </li>
+                    <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center">
+                      <User className="mr-2 h-4 w-4" />
+                      <NavLink to={"/dashboard/my-profile"}>Profile</NavLink>
+                    </li>
+                    <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center pb-5">
+                      <Link
+                        to="/"
+                        onClick={handleLogout}
+                        className="text-[15px] flex items-center"
+                      >
+                        <TbLogout className="mr-2 text-[#e33226]" />
+                        Logout
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link to="/login">
+              <button className="flex items-center bg-red-500 text-white font-bold rounded-md px-5 py-2">
+                Login
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="ml-1 h-6 w-6"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M15.59 4.59a1 1 0 00-1.42 1.42L16.17 8H9a7 7 0 100 14h8a1 1 0 100-2h-8a5 5 0 010-10h7.17l-2.59 2.59a1 1 0 101.42 1.42l4-4a1 1 0 000-1.42l-4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+            </Link>
+          )}
         </div>
       </header>
     </div>
@@ -165,37 +224,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-{
-  /* <div className="relative h-[65px]">
-<div
-  tabIndex={0}
-  role="button"
-  className="relative font-medium text-base text-black mx-3 flex items-center h-full"
->
-  <img
-    className="rounded-lg max-w-[48px] max-h-[48px]"
-    src="{defaultImg}"
-    alt="User profile"
-  />
-</div>
-
-<div className="pt-12 py-7">
-  <ul className=" absolute right-0 top-16 z-50 w-fit rounded-sm bg-white shadow-md pt-4 pl-5 pr-6 space-y-4">
-    <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center">
-      <LayoutDashboard className="mr-2 h-4 w-4" />
-      <NavLink to={"/dashboard"}>Dashboard</NavLink>
-    </li>
-    <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center">
-      <User className="mr-2 h-4 w-4" />
-      <NavLink to={"/dashboard/my-profile"}>Profile</NavLink>
-    </li>
-    <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center pb-5">
-      <Link to="" className="text-[15px] flex items-center">
-        <TbLogout className="mr-2 text-[#e33226]" />
-        Logout
-      </Link>
-    </li>
-  </ul>
-</div>
-</div> */
-}

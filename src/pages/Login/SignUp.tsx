@@ -1,11 +1,18 @@
+import { useSignUpUserMutation } from "@/redux/features/auth/authApi";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+
 interface FormValues {
   name: string;
   email: string;
   password: string;
   confirmPassword: string;
+  phone: string;
+  address: string;
 }
+
 export default function SignUp() {
   const {
     register,
@@ -13,36 +20,32 @@ export default function SignUp() {
     watch,
     formState: { errors },
   } = useForm<FormValues>();
+  const [createUser, { isSuccess }] = useSignUpUserMutation();
+  const navigate = useNavigate();
 
-  // const [createUser, { isSuccess }] = useCreateUserMutation();
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //     if (isSuccess) {
-  //         toast.success("User Created Successfully");
-  //         navigate("/login");
-  //     }
-  // }, [isSuccess, navigate]);
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("User Created Successfully");
+      navigate("/login");
+    }
+  }, [isSuccess, navigate]);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    const userData = new FormData();
-    userData.append("data", JSON.stringify(data));
-    // createUser(userData);
-    console.log(data);
+    createUser(data);
   };
 
   const password = watch("password");
 
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-background">
+    <div className="flex min-h-screen flex-col mt-16">
       <div className="container mx-auto flex flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto w-full max-w-md space-y-8">
-          <div>
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-foreground">
-              Register for Sports Mart
+        <div className="w-full max-w-md space-y-8 bg-white p-8 rounded-lg shadow-lg">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Register for CoxRide
             </h2>
-            <p className="mt-2 text-center text-sm text-muted-foreground">
-              Create an account to start shopping
+            <p className="mt-2 text-sm text-gray-600">
+              Create an account to start riding
             </p>
           </div>
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -55,6 +58,7 @@ export default function SignUp() {
                 type="text"
                 autoComplete="name"
                 placeholder="Full name"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 {...register("name", {
                   required: "Name is required",
                 })}
@@ -74,6 +78,7 @@ export default function SignUp() {
                 type="email"
                 autoComplete="email"
                 placeholder="Email address"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -97,6 +102,7 @@ export default function SignUp() {
                 type="password"
                 autoComplete="new-password"
                 placeholder="Password"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 {...register("password", {
                   required: "Password is required",
                   minLength: {
@@ -120,6 +126,7 @@ export default function SignUp() {
                 type="password"
                 autoComplete="new-password"
                 placeholder="Confirm password"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 {...register("confirmPassword", {
                   required: "Please confirm your password",
                   validate: (value) =>
@@ -133,17 +140,60 @@ export default function SignUp() {
               )}
             </div>
             <div>
-              <button type="submit" className="w-full">
+              <label htmlFor="phone" className="sr-only">
+                Phone
+              </label>
+              <input
+                id="phone"
+                type="text"
+                autoComplete="phone"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                placeholder="Phone Number"
+                {...register("phone", {
+                  required: "Phone is required",
+                })}
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.phone.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="address" className="sr-only">
+                Address
+              </label>
+              <input
+                id="address"
+                type="text"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                autoComplete="address"
+                placeholder="Address"
+                {...register("address", {
+                  required: "Address is required",
+                })}
+              />
+              {errors.address && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.address.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <button
+                type="submit"
+                className="w-full py-2 px-4 bg-red-500 text-white font-semibold rounded-lg hover:bg-purple-700 transition duration-300"
+              >
                 Register
               </button>
             </div>
           </form>
           <div className="text-center mt-4">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="font-medium text-primary hover:text-primary/80"
+                className="font-medium text-purple-600 hover:text-purple-500"
               >
                 Sign in
               </Link>

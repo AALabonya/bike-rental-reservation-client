@@ -10,8 +10,8 @@ export default function CounterUp() {
     <div className="mt-24">
       <Parallax bgImage={"https://i.ibb.co/9TZcWHz/7canoszy.png"}>
         <div>
-          <div className="flex-1 px-32">
-            <div className="flex gap-24">
+          <div className="flex-1 lg:px-32 px-2">
+            <div className="flex lg:gap-24">
               <div className="flex gap-4 justify-center items-center">
                 <BsScooter className="text-white w-24 h-44 " />
                 <div className="items-center">
@@ -35,7 +35,7 @@ export default function CounterUp() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-24">
+            <div className="flex lg:gap-24">
               <div className="flex gap-4 justify-center items-center">
                 <FaDownload className="text-white w-24 h-44 " />
                 <div className="items-center">

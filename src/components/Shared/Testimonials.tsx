@@ -435,6 +435,7 @@
 //   );
 // }
 import React, { useState } from "react";
+import PageTitleForHome from "./PageTitleForHome";
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -494,13 +495,12 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-black px-11">
-      <div className="px-16 py-12 sm:px-20 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
-        <div className="items-end justify-between sm:flex sm:pe-6 lg:pe-8">
-          <h2 className="max-w-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
-            Read trusted reviews from our customers
-          </h2>
-
+    <section className="bg-gray-50 dark:bg-black lg:px-11">
+      <div className="pt-12">
+        <PageTitleForHome title="Reviews from our customers" />
+      </div>
+      <div className="lg:px-16 sm:px-20 lg:me-0 lg:pe-0 lg:ps-8 ">
+        <div className="items-end justify-end flex sm:pe-6 lg:pe-8 px-3">
           <div className="mt-8 flex gap-4 lg:mt-0">
             <button
               aria-label="Previous slide"

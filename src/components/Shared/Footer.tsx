@@ -13,7 +13,7 @@ const Footer = () => {
             backgroundImage: 'url("https://i.ibb.co/3N9d4r2/bike1.jpg")',
           }}
         >
-          <div className=" bg-[#3b3737b2] py-12 pl-36">
+          <div className=" bg-[#3b3737b2] py-12 lg:pl-36">
             <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-12 gap-8 lg:px-0 md:px-10 px-5">
               <div className="relative ">
                 <h2 className="text-xl font-bold mb-2 uppercase">
@@ -76,19 +76,19 @@ const Footer = () => {
                     to={"/"}
                     className={"hover:text-green font-semibold"}
                   >
-                    Home
+                    Terms & Conditions
                   </NavLink>
                   <NavLink
                     to={"/about-us"}
                     className={"hover:text-green font-semibold"}
                   >
-                    About Us
+                    Privacy Policy
                   </NavLink>
                   <NavLink
                     to={"/products"}
                     className={"hover:text-green font-semibold"}
                   >
-                    Products
+                    Cookies
                   </NavLink>
                 </div>
               </div>
@@ -112,46 +112,13 @@ const Footer = () => {
           </div>
         </div>
         <div className="w-full bg-black text-gray-300 py-4 ">
-          <div className=" px-[74px]">
-            <div className="grid lg:grid-cols-2 grid-cols-1 lg:justify-between justify-center gap-5">
+          <div className=" ">
+            <div className="flex justify-center">
               <div className="text-sm lg:text-left text-center">
                 COPYRIGHT © 2024, ALL RIGHTS RESERVED. POWERED BY{" "}
                 <NavLink to={"/"} className={"font-bold"}>
                   CoxRide
                 </NavLink>
-              </div>
-              <div className="flex lg:justify-end justify-center">
-                <ul className="mt-8 flex flex-wrap justify-start gap-4 text-xs sm:mt-0 lg:justify-end">
-                  <li>
-                    <a
-                      href="#"
-                      className="text-gray-500 transition hover:opacity-75"
-                    >
-                      {" "}
-                      Terms & Conditions{" "}
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
-                      className="text-gray-500 transition hover:opacity-75"
-                    >
-                      {" "}
-                      Privacy Policy{" "}
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
-                      className="text-gray-500 transition hover:opacity-75"
-                    >
-                      {" "}
-                      Cookies{" "}
-                    </a>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

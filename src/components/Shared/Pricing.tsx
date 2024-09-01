@@ -77,36 +77,36 @@ export default function Pricing() {
         ></div>
         <div className="relative z-10 flex items-center justify-center min-h-[40vh] text-neutral-content text-center">
           <div className="">
-            <h1 className="mb-5 text-5xl text-white font-bold pt-16">
+            <h1 className="mb-5 lg:text-5xl text-3xl text-white font-bold pt-16">
               Our Pricing Include
             </h1>
             <p className="mb-5 text-white">
               Bikes & electric scooters for renting at low prices
             </p>
-            <div className="grid grid-cols-6 gap-14 pt-12">
-              <div className="bg-white w-32 h-32 rounded-full flex justify-center items-center flex-col">
-                <GiFullMotorcycleHelmet className="w-10 h-10 mb-2 text-red-600" />
-                <p>Helmets</p>
+            <div className="grid  grid-cols-3 lg:grid-cols-6 lg:gap-14 pt-12 gap-5 px-3">
+              <div className="bg-white dark:text-black w-16 h-16 lg:w-32 lg:h-32 rounded-full flex justify-center items-center flex-col">
+                <GiFullMotorcycleHelmet className="lg:w-10 lg:h-10 mb-2 text-red-600 " />
+                <p className="text-[10px] lg:text-base">Helmets</p>
               </div>
-              <div className="bg-white w-32 h-32 mt-12 rounded-full flex justify-center items-center flex-col">
-                <TfiHeadphoneAlt className="w-10 h-10 mb-2 text-red-600" />
-                <p>Assistance</p>
+              <div className="bg-white  dark:text-black w-16 h-16 lg:w-32 lg:h-32 lg:mt-16 rounded-full flex justify-center items-center flex-col p-2">
+                <TfiHeadphoneAlt className="lg:w-10 lg:h-10 mb-2 text-red-600 " />
+                <p className="text-[10px] lg:text-base">Assistance</p>
               </div>
-              <div className="bg-white w-32 h-32 mt-24 rounded-full flex justify-center items-center flex-col">
-                <SiAdguard className="w-10 h-10 mb-2 text-red-600" />
-                <p>Insurance</p>
+              <div className="bg-white  dark:text-black w-16 h-16 lg:w-32 lg:h-32 lg:mt-24 rounded-full flex justify-center items-center flex-col">
+                <SiAdguard className="lg:w-10 lg:h-10 mb-2 text-red-600 " />
+                <p className="text-[10px] lg:text-base">Insurance</p>
               </div>
-              <div className="bg-white w-32 h-32 mt-24 rounded-full flex justify-center items-center flex-col">
-                <ImCancelCircle className="w-10 h-10 mb-2 text-red-600" />
-                <p>Cancellation</p>
+              <div className="bg-white  dark:text-black w-16 h-16 lg:w-32 lg:h-32 lg:mt-24 rounded-full flex justify-center items-center flex-col">
+                <ImCancelCircle className="lg:w-10 lg:h-10 mb-2 text-red-600 " />
+                <p className="text-[10px] lg:text-base"> Cancellation</p>
               </div>
-              <div className="bg-white w-32 h-32 mt-16 rounded-full flex justify-center items-center flex-col">
-                <TbDiscount className="w-10 h-10 mb-2 text-red-600" />
-                <p>Discount</p>
+              <div className="bg-white  dark:text-black w-16 h-16 lg:w-32 lg:h-32 lg:mt-16 rounded-full flex justify-center items-center flex-col">
+                <TbDiscount className="lg:w-10 lg:h-10 mb-2 text-red-600 " />
+                <p className="text-[10px] lg:text-base">Discount</p>
               </div>
-              <div className="bg-white w-32 h-32  rounded-full flex justify-center items-center flex-col">
-                <FaRoad className="w-10 h-10 mb-2 text-red-600" />
-                <p>Full Routes</p>
+              <div className="bg-white  dark:text-black w-16 h-16 lg:w-32 lg:h-32 mb-3 rounded-full flex justify-center items-center flex-col">
+                <FaRoad className="lg:w-10 lg:h-10 mb-2 text-red-600 " />
+                <p className="text-[10px] lg:text-base">Full Routes</p>
               </div>
             </div>
           </div>

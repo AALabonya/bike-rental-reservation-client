@@ -1,6 +1,14 @@
 export interface TUser {
+  _id: string;
+  name: string;
   user: string;
+  email: string;
+  phone: string;
+  address: string;
   role: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
   iat: number;
   exp: number;
 }
@@ -10,6 +18,7 @@ export interface TUserData {
   email: string;
   phone?: string;
   avatar?: string;
+
   city?: string;
   state?: string;
   zip_code?: string;

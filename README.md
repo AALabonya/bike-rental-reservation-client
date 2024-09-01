@@ -1,30 +1,47 @@
-# React + TypeScript + Vite
+## Bike Rental Reservation Frontend Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Introduction
 
-Currently, two official plugins are available:
+This project requires building a comprehensive frontend for a Bike Rental Service that offers a smooth user experience across different roles (User/Admin). It includes standard features like bike listings, booking, and profile management, along with advanced features like coupon management, gamified discounts, and dark mode. The frontend must be fully responsive and seamlessly integrate with the backend to provide a complete rental service solution.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technology Used
 
-## Expanding the ESLint configuration
+- Typescript
+- React
+- React Router DOM
+- Tailwind CSS
+- Shadcn
+- Redux Toolkit
+- RTK Query
+- Redux Persist
+- react-awesome-reveal
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Feature
 
-- Configure the top-level `parserOptions` property like this:
+- Essential links: Home, About Us, All Products, Contact
+- Social media icons: Facebook, Instagram, Twitter, LinkedIn
+- Hero carousel showcasing top products and promotions
+- Featured products section with bestsellers
+- Category section highlighting different sports categories
+- Mission and vision
+- Team members
+- Store location with an interactive map and address details
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## How to Run the Project
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Clone the Repository
+
+git clone https://github.com/AALabonya/bike-rental-reservation-client.git
+
+cd bike-rental-reservation-client
+
+## Install Dependencies
+
+npm install
+
+npm run dev
+
+github link:[bike-rental-reservation-client](https://github.com/AALabonya/bike-rental-reservation-client.git)
+
+Live Server Link:
+live link :

@@ -2,58 +2,56 @@ import {
   BaseQueryApi,
   BaseQueryFn,
   createApi,
-  DefinitionType,
   FetchArgs,
+  FetchBaseQueryError,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
-
 import { RootState } from "../store";
-import { logOut, setUser } from "../features/auth/authSlice";
+import { logOut } from "../features/auth/authSlice";
 import toast from "react-hot-toast";
 import config from "@/config";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${config.url}/api`,
-
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
+    console.log(token);
+
     if (token) {
-      headers.set("authorization", token);
+      headers.set("authorization", `Bearer ${token}`);
     }
     return headers;
   },
 });
-const baseQueryWithRefreshToken: BaseQueryFn<
-  FetchArgs,
-  BaseQueryApi,
-  DefinitionType
-> = async (args, api, extraOption): Promise<any> => {
-  let result = await baseQuery(args, api, extraOption);
 
-  if (result?.error?.status === 404) {
-    toast.error("User Not Found");
-  }
+const baseQueryWithNoRefreshToken: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+  let result = await baseQuery(args, api, extraOptions);
+
+  // Check the response for error status
   if (result?.error?.status === 401) {
-    const res = await fetch(`${config.url}/auth/refresh-token`, {
-      method: "POST",
-      credentials: "include",
-    });
-    const data = await res.json();
-    if (data?.token) {
-      const user = (api.getState() as RootState).auth.user;
-
-      api.dispatch(setUser({ user, token: data?.token }));
-      result = await baseQuery(args, api, extraOption);
-    }
-    api.dispatch(logOut());
+    // Log the error for debugging purposes
+    console.error("Unauthorized access. Error details:", result.error);
+    toast.error("Session expired. Please log in again.");
+  } else if (result?.error?.status === 404) {
+    toast.error("Resource not found.");
+  } else if (result?.error) {
+    // Handle other possible errors
+    toast.error(
+      result.error.data?.message || "An error occurred. Please try again."
+    );
   }
+
   return result;
 };
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: baseQueryWithRefreshToken,
+  baseQuery: baseQueryWithNoRefreshToken,
   endpoints: () => ({}),
-  tagTypes: ["auth", "users", "userData", "bikes"],
+  tagTypes: ["auth", "users", "userData", "bikes", "rentals", "coupons"],
 });

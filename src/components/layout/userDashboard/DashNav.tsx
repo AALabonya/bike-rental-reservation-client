@@ -42,7 +42,7 @@ const DashNav = ({ toggleSidebar }) => {
             >
               <img
                 className="rounded-lg max-w-[48px] max-h-[48px]"
-                src={defaultImg}
+                src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1696786604~exp=1696787204~hmac=c10645727b8724eecda4984ef1d8fbfba92a9c9072a57b851c28c9b1d8d62b81"
                 alt="User profile"
               />
             </div>
