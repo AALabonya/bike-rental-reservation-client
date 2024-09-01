@@ -101,7 +101,7 @@ export default function WheelSpin() {
                   transform: `rotate(${
                     index * (360 / couponsData?.data.length)
                   }deg)`,
-                  background: index % 2 === 0 ? "#FF6347 w-32" : "#00FF00",
+                  background: index % 2 === 0 ? "#FF6347" : "#00FF00",
                 }}
               >
                 <div className="wheel-text">
@@ -120,9 +120,9 @@ export default function WheelSpin() {
         </div>
       </div>
       {showCoupon && selectedCoupon && (
-        <div className="z-50 p-6 bg-white   -mt-56 dark:bg-gray-800 rounded-lg shadow-xl border-gray-300 border-2">
-          <div className="flex items-center gap-4 justify-between">
-            <div className="flex items-center space-x-4">
+        <div className="z-50 lg:p-6 p-2 bg-white   -mt-56 dark:bg-gray-800 rounded-lg shadow-xl border-gray-300 border-2">
+          <div className="flex items-center gap-4 lg:justify-between lg:flex-row flex-col">
+            <div className="flex items-center lg:space-x-4">
               <div className="bg-yellow-500 p-3 rounded-full">
                 <Copy className="w-6 h-6 text-white" />
               </div>

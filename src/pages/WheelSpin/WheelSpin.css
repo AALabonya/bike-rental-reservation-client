@@ -42,29 +42,59 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-/* Adjustments for smaller devices */
-@media (max-width: 600px) {
+/* Adjustments for extra-small devices (portrait phones, less than 400px) */
+@media (max-width: 400px) {
   .wheel-container {
-    max-width: 200px;
+    width: 150px;
+    height: 150px;
   }
 
   .wheel-text {
-    font-size: 3.5vw; /* Further scale down text */
+    font-size: 3.5vw; /* Scale down text for very small screens */
   }
 }
-@media (max-width: 300px) {
+
+/* Adjustments for small devices (landscape phones, 400px to 600px) */
+@media (min-width: 400px) and (max-width: 600px) {
   .wheel-container {
-    max-width: 200px;
+    width: 200px;
+    height: 200px;
   }
 
   .wheel-text {
-    font-size: 3.5vw; /* Further scale down text */
+    font-size: 3.5vw; /* Slightly larger text for small screens */
   }
 }
-/* Adjustments for larger devices */
+
+/* Adjustments for medium devices (tablets, 600px to 900px) */
+@media (min-width: 600px) and (max-width: 900px) {
+  .wheel-container {
+    width: 250px;
+    height: 250px;
+  }
+
+  .wheel-text {
+    font-size: 2.8vw; /* Adjust text size for medium screens */
+  }
+}
+
+/* Adjustments for large devices (desktops, 900px to 1200px) */
+@media (min-width: 900px) and (max-width: 1200px) {
+  .wheel-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .wheel-text {
+    font-size: 2vw; /* Maintain larger text size */
+  }
+}
+
+/* Adjustments for extra-large devices (large desktops, 1200px and above) */
 @media (min-width: 1200px) {
   .wheel-container {
-    max-width: 400px;
+    width: 400px;
+    height: 400px;
   }
 
   .wheel-text {
