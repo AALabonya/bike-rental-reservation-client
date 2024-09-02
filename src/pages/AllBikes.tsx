@@ -66,8 +66,8 @@ const Bikes = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-end bg-white">
             {/* Search Bikes */}
             <div className="flex flex-col gap-3">
-              <h2 className="font-medium">Search Bikes</h2>
-              <div className="relative w-full">
+              <h2 className="font-medium dark:text-black">Search Bikes</h2>
+              <div className="relative w-full dark:text-black">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400" />
                 <input
                   type="search"
@@ -81,9 +81,11 @@ const Bikes = () => {
 
             {/* Filter by Availability */}
             <div className="flex flex-col gap-3">
-              <h2 className="font-medium">Filter by Availability</h2>
+              <h2 className="font-medium dark:text-black">
+                Filter by Availability
+              </h2>
               <select
-                className="w-full bg-gray-100 py-2 border border-gray-300 rounded"
+                className="w-full bg-gray-100 py-2 border border-gray-300 rounded dark:text-black"
                 value={availabilityFilter}
                 onChange={handleAvailabilityChange}
               >
@@ -95,13 +97,13 @@ const Bikes = () => {
 
             {/* Filter by Brand */}
             <div className="flex flex-col gap-3">
-              <h2 className="font-medium">Filter by Brand</h2>
+              <h2 className="font-medium dark:text-black">Filter by Brand</h2>
               <select
-                className="w-full bg-gray-100 py-2 border border-gray-300 rounded"
+                className="w-full bg-gray-100 py-2 border border-gray-300 rounded dark:text-black"
                 value={brandFilter}
                 onChange={handleBrandChange}
               >
-                <option value="">Select A Brand</option>
+                <option value="dark:text-black">Select A Brand</option>
                 <option value="bajaj">Bajaj</option>
                 <option value="hero">Hero</option>
                 <option value="tvsmotor">TVS Motor</option>
@@ -120,7 +122,7 @@ const Bikes = () => {
               className="w-full bg-red-500 text-base font-semibold text-white py-2 rounded hover:bg-gray-700 flex items-center gap-5"
               onClick={resetFilters}
             >
-              <GrPowerReset className="ml-5" /> <span>Reset</span>
+              <GrPowerReset className="ml-5 " /> <span>Reset</span>
             </button>
           </div>
         </div>
