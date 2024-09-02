@@ -12,7 +12,7 @@ import {
 import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 
 const BikeManagement = () => {
-  const { data: bikeData, isLoading } = useGetBikeQuery(undefined);
+  const { data: bikeData, isLoading, refetch } = useGetBikeQuery(undefined);
 
   const [deleteBike] = useDeleteBikeMutation();
   const bikes = bikeData?.data;
@@ -21,7 +21,8 @@ const BikeManagement = () => {
   const handleDeleteBike = async (id: string) => {
     const toastId = toast.loading("Marking bike as unavailable...");
     try {
-      const res = await deleteBike(id).unwrap(); // Unwraps the response
+      const res = await deleteBike(id).unwrap();
+      refetch();
       toast.success(res.message, { id: toastId });
     } catch (error) {
       console.error("Bike marking failed:", error);

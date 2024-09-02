@@ -55,7 +55,7 @@ const Welcome = () => {
             <img
               src="https://i.ibb.co/JK2VFRB/welcome-sign-724689-960-720.jpg"
               alt=""
-              className="h-44 w-1/2"
+              className="h-44 "
             />
             <h3 className="text-4xl font-bold tracking-tight font-orbitron ">
               Welcome {user?.name}

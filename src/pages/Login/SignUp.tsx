@@ -182,7 +182,7 @@ export default function SignUp() {
             <div>
               <button
                 type="submit"
-                className="w-full py-2 px-4 bg-red-500 text-white font-semibold rounded-lg hover:bg-purple-700 transition duration-300"
+                className="w-full py-2 px-4 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300"
               >
                 Register
               </button>

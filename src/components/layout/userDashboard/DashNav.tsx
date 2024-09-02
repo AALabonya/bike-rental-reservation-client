@@ -88,7 +88,7 @@ const DashNav = ({ toggleSidebar }: DashNavProps) => {
                       <li className="hover:bg-[#002172] transition-all ease-out duration-300 hover:text-white flex items-center pb-5">
                         <Link
                           onClick={handleLogout}
-                          to="/logout"
+                          to="/"
                           className="text-[15px] flex items-center"
                         >
                           <TbLogout className="mr-2 text-[#e33226]" />

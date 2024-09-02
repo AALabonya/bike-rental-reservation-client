@@ -58,30 +58,50 @@ const CreateCouponForm: React.FC<CreateCouponFormProps> = ({ setOpen }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
         <label htmlFor="title">Coupon Title</label>
-        <input type="text" id="title" {...register("title")} />
+        <input
+          className="p-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500 ml-2"
+          type="text"
+          id="title"
+          {...register("title")}
+        />
         {errors.title && (
           <p className="text-red-500">{errors.title.message as string}</p>
         )}
       </div>
       <div>
         <label htmlFor="discount">Coupon Discount</label>
-        <input type="number" id="discount" {...register("discount")} />
+        <input
+          className="p-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500  ml-2"
+          type="number"
+          id="discount"
+          {...register("discount")}
+        />
         {errors.discount && (
           <p className="text-red-500">{errors.discount.message as string}</p>
         )}
       </div>
       <div>
         <label htmlFor="couponCode">Coupon Code</label>
-        <div className="flex items-center">
-          <input type="text" id="couponCode" value={couponCode} readOnly />
-          <button type="button" onClick={handleGenerateCouponCode}>
+        <div className="flex flex-col md:flex-row items-center gap-2">
+          <input
+            className="p-1 border border-gray-300 rounded focus:outline-none focus:ring  "
+            type="text"
+            id="couponCode"
+            value={couponCode}
+            readOnly
+          />
+          <button
+            type="button"
+            className="bg-red-500 text-white ml-3 px-4 py-1 rounded-md"
+            onClick={handleGenerateCouponCode}
+          >
             Generate Code
           </button>
         </div>
       </div>
 
-      <div className="flex items-center justify-start">
-        <button type="submit">
+      <div className="flex items-center justify-center py-1 rounded w-full bg-red-500 text-white">
+        <button type="submit" className="text-center">
           {isLoading ? "Creating..." : "Create Coupon"}
         </button>
       </div>

@@ -152,7 +152,7 @@ const Login: FC = () => {
             <div>
               <button
                 type="submit"
-                className="w-full py-2 px-4 bg-red-500 text-white font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full py-2 px-4 bg-red-500 text-white font-medium rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 Sign in
               </button>

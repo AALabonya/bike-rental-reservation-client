@@ -1,17 +1,7 @@
 import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 import { useGetMeQuery } from "@/redux/features/user/userApi";
-import {
-  Camera,
-  Facebook,
-  Instagram,
-  Mail,
-  MapPin,
-  PhoneCall,
-  SquarePen,
-  Twitter,
-  User,
-  Youtube,
-} from "lucide-react";
+import { Camera, Mail, MapPin, PhoneCall, SquarePen, User } from "lucide-react";
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 const Profile = () => {
@@ -49,7 +39,7 @@ const Profile = () => {
           <div className="absolute bottom-4 right-4">
             <label
               htmlFor="cover"
-              className="flex items-center gap-2 bg-blue-500 text-white py-1 px-2 rounded cursor-pointer hover:bg-blue-600"
+              className="flex items-center gap-2 bg-red-500 text-white py-1 px-2 rounded cursor-pointer hover:bg-blue-600"
             >
               <input type="file" name="cover" id="cover" className="sr-only" />
               <Camera size={20} />
@@ -66,7 +56,7 @@ const Profile = () => {
             />
             <label
               htmlFor="profile"
-              className="absolute bottom-0 right-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white cursor-pointer shadow-lg hover:bg-blue-600"
+              className="absolute bottom-0 right-0 w-8 h-8 flex items-center justify-center rounded-full bg-red-500 text-white cursor-pointer shadow-lg hover:bg-blue-600"
             >
               <Camera size={20} />
               <input
@@ -92,7 +82,7 @@ const Profile = () => {
                 <div className="flex items-center justify-between p-4">
                   <NavLink
                     to="/userDash/edit-profile"
-                    className="bg-blue-500 text-white rounded-md px-2 py-1 flex items-center gap-1 hover:bg-blue-600"
+                    className="bg-red-500 text-white rounded-md px-2 py-1 flex items-center gap-1 hover:bg-red-600"
                   >
                     <SquarePen size={20} />
                     <span>Edit Profile</span>
@@ -125,11 +115,11 @@ const Profile = () => {
                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
                       Follow me on
                     </h4>
-                    <div className="mt-2 flex justify-center gap-4 text-gray-600 dark:text-gray-300">
-                      <Facebook className="text-blue-600 hover:text-blue-800 cursor-pointer" />
-                      <Instagram className="text-pink-600 hover:text-pink-800 cursor-pointer" />
-                      <Twitter className="text-blue-400 hover:text-blue-600 cursor-pointer" />
-                      <Youtube className="text-red-600 hover:text-red-800 cursor-pointer" />
+                    <div className="flex w-full justify-center items-center space-x-5 mt-2">
+                      <FaFacebook className="size-6 hover:text-green cursor-pointer text-red-500" />
+                      <FaInstagram className="size-6 hover:text-green cursor-pointer text-red-500" />
+                      <FaTwitter className="size-6 hover:text-green cursor-pointer text-red-500" />
+                      <FaYoutube className="size-6 hover:text-green cursor-pointer text-red-500" />
                     </div>
                   </div>
                 </div>

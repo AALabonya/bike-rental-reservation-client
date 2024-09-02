@@ -324,7 +324,7 @@ const CouponManagement = () => {
       <div className="pt-9">
         <PageTitleForHome title="Return Bike Management" />
       </div>
-      <div className="flex justify-end mb-4">
+      <div className="">
         <CreateCouponModal />
       </div>
 
