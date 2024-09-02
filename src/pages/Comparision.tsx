@@ -44,7 +44,7 @@ export default function Comparison() {
         <h2 className="text-xl font-semibold mb-4">
           Select up to 3 bikes to compare:
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 dark:text-black">
           {bikes?.map((bike: Bike) => (
             <button
               key={bike._id}
@@ -67,16 +67,16 @@ export default function Comparison() {
       </div>
 
       {selectedBikes.length > 0 && (
-        <div className="bg-gray-100 rounded-lg p-6 overflow-x-auto">
-          <table className="min-w-full table-auto">
+        <div className="bg-gray-100 rounded-lg p-6 overflow-x-auto dark:text-black">
+          <table className="">
             <thead>
               <tr>
                 <th className="text-left p-2">Feature</th>
                 {selectedBikes.map((bike) => (
                   <th key={bike._id} className="p-2">
-                    <div className="flex justify-between items-center">
+                    <div className="flex gap-4">
                       <span>{bike.name}</span>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-3">
                         <Link
                           to={`/bike-details/${bike._id}`}
                           className="text-blue-600 hover:underline"

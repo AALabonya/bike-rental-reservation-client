@@ -1,3 +1,4 @@
+import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 import { CiLocationOn } from "react-icons/ci";
 import { IoIosSend } from "react-icons/io";
 import { LuPhoneCall } from "react-icons/lu";
@@ -34,13 +35,16 @@ export default function ContactUs() {
         </div>
       </div>
       {/* contact  */}
+      <div className=" mb-10">
+        <PageTitleForHome title="Contact with coxRide" />
+      </div>
       {/* page section */}
       <div className="lg:max-w-screen-2xl w-11/12 mx-auto mt-24 lg:px-32">
         {/* use extra div for change any desgin or any problem */}
         <div>
-          <div className="mb-24 flex md:flex-row flex-col justify-center items-center gap-5">
+          <div className="mb-24 flex md:flex-row flex-col justify-center items-center gap-5 ">
             <div
-              className=" md:w-full w-11/12 mx-auto h-[200px] shadow-2xl flex flex-col justify-center items-center relative
+              className=" md:w-full w-11/12 mx-auto dark:bg-white text-black h-[200px] shadow-2xl flex flex-col justify-center items-center relative
                          py-10"
             >
               <p className=" bg-red-500 hover:bg-purple-900 h-10 w-10 lg:h-16 lg:w-16 rounded-full flex flex-col justify-center items-center absolute -top-9">
@@ -53,7 +57,7 @@ export default function ContactUs() {
                 New York, USA
               </p>
             </div>
-            <div className="md:w-full w-11/12 mx-auto h-[200px] shadow-2xl flex flex-col justify-center items-center relative">
+            <div className="md:w-full w-11/12 dark:bg-white  text-black mx-auto h-[200px] shadow-2xl flex flex-col justify-center items-center relative">
               <p className=" bg-red-500 hover:bg-purple-900 h-10 w-10 lg:h-16 lg:w-16 rounded-full flex flex-col justify-center items-center absolute -top-9">
                 <MdOutlineEmail className="md:text-3xl text-2xl lg:text-5xl font-bold text-white"></MdOutlineEmail>
               </p>
@@ -64,7 +68,7 @@ export default function ContactUs() {
                 New York, USA
               </p>
             </div>
-            <div className=" md:w-full w-11/12 mx-auto h-[200px] shadow-2xl flex flex-col justify-center items-center relative">
+            <div className=" md:w-full dark:bg-white text-black w-11/12 mx-auto h-[200px] shadow-2xl flex flex-col justify-center items-center relative">
               <p className=" bg-red-500 hover:bg-purple-900 h-10 w-10 lg:h-16 lg:w-16 rounded-full flex flex-col justify-center items-center absolute -top-9">
                 <LuPhoneCall className="md:text-3xl text-2xl lg:text-5xl font-bold text-white"></LuPhoneCall>
               </p>

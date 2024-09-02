@@ -215,7 +215,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="bg-gray-100 py-16 mt-10 px-20">
+      <div className="bg-gray-100 py-16 mt-10 px-20 dark:text-black">
         <div>
           <div className="flex flex-col md:flex-row md:gap-10 items-center">
             <div className="flex-1">
