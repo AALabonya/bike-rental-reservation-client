@@ -29,10 +29,13 @@ const Home = () => {
     event.preventDefault();
     const query = searchQuery.toLowerCase();
 
-    // Filter bikes based on the search query and availability
+    // Filter bikes based on the search query (name, brand, or model) and availability
     const filteredBikes = (allBikes?.data || []).filter(
       (bike) =>
-        bike.isAvailable === true && bike.name.toLowerCase().includes(query)
+        bike.isAvailable === true &&
+        (bike.name.toLowerCase().includes(query) ||
+          bike.brand.toLowerCase().includes(query) ||
+          bike.model.toLowerCase().includes(query))
     );
 
     setDisplayedBikes(filteredBikes);

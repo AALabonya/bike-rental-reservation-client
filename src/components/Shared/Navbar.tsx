@@ -329,6 +329,43 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
+
+            <div className="flex gap-2">
+              <Link to="/login">
+                <button className="flex items-center bg-red-500 text-white font-bold rounded-md px-5 py-2 lg:hidden">
+                  Login
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="ml-1 h-6 w-6"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M15.59 4.59a1 1 0 00-1.42 1.42L16.17 8H9a7 7 0 100 14h8a1 1 0 100-2h-8a5 5 0 010-10h7.17l-2.59 2.59a1 1 0 101.42 1.42l4-4a1 1 0 000-1.42l-4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </Link>
+              <Link to="/signUp">
+                <button className="flex items-center bg-red-500 text-white font-bold rounded-md px-5 py-2 lg:hidden">
+                  SignUp
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="ml-1 h-6 w-6"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M15.59 4.59a1 1 0 00-1.42 1.42L16.17 8H9a7 7 0 100 14h8a1 1 0 100-2h-8a5 5 0 010-10h7.17l-2.59 2.59a1 1 0 101.42 1.42l4-4a1 1 0 000-1.42l-4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            </div>
           </ul>
         </div>
 
