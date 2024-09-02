@@ -35,7 +35,7 @@ const ManageRentalsTable: FC = () => {
             </tr>
           </thead>
           <tbody>
-            {rentData?.data.map((rental: IRental) => (
+            {rentData?.data?.map((rental: IRental) => (
               <tr key={rental._id} className="text-center">
                 <td className="px-4 py-2 border-b">
                   <div className="rounded-md overflow-hidden w-16 mx-auto">

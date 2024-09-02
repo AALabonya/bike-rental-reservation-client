@@ -21,10 +21,11 @@ import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import Welcome from "@/components/Shared/Welcome";
 import ContactUs from "@/pages/ContactUs";
 import Comparision from "@/pages/Comparision";
-import CouponManagement from "@/pages/admin/CouponManagement";
+
 import NotFound from "@/pages/Not_Found/NotFound";
 import ErrorHandler from "@/pages/ErrorHandler";
 import PaymentPage from "@/pages/Payment";
+import CouponManagement from "@/pages/admin/CouponManagement";
 
 const router = createBrowserRouter([
   {

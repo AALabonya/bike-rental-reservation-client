@@ -20,15 +20,15 @@ const EditProfile = () => {
     role: data?.role || "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     await updateUser(formData);
-    navigate("/userDash/profile"); // Navigate back to profile after update
+    navigate("/userDash/profile");
   };
 
   if (isLoading || isError) {

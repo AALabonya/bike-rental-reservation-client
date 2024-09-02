@@ -122,6 +122,7 @@ const UpdateBike = () => {
                 render={({ field }) => (
                   <select
                     {...field}
+                    value={String(field.value)}
                     className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   >
                     <option value="true">Available</option>
@@ -291,7 +292,7 @@ const UpdateBike = () => {
                   <textarea
                     {...field}
                     className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    rows="4"
+                    rows={4}
                     placeholder="Write a description of your bike"
                   />
                 )}

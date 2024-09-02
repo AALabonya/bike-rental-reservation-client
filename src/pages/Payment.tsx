@@ -91,7 +91,7 @@ const PaymentForm: FC = () => {
         },
       });
 
-      if (paymentResult.error) {
+      if (paymentResult.error && paymentResult.error.message) {
         toast.error(paymentResult.error.message);
       } else {
         if (paymentResult.paymentIntent?.status === "succeeded") {

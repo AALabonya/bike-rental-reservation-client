@@ -11,7 +11,7 @@ import { Fade, JackInTheBox, Slide, Zoom } from "react-awesome-reveal";
 
 function WhyChooseUs() {
   return (
-    <div className="lg:py-16 dark:bg-black">
+    <div className="lg:py-16 dark:bg-black overflow-hidden">
       {/* Combined Why Choose Us Section */}
       <div>
         <JackInTheBox>
@@ -21,12 +21,12 @@ function WhyChooseUs() {
           </div>
         </JackInTheBox>
 
-        <p className="max-w-3xl mx-auto text-md md:text-lg lg:text-xl text-center text-gray-600 dark:text-gray-300">
+        <p className="max-w-3xl mx-auto text-md md:text-lg lg:text-xl text-center text-gray-600 dark:text-gray-300 overflow-hidden">
           Discover the reasons why CoxRide is the preferred choice for bike and
           scooter rentals.
         </p>
       </div>
-      <section className="">
+      <section className="overflow-hidden">
         <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
           <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
             <div>

@@ -7,6 +7,7 @@ import {
 } from "@/redux/features/user/userApi";
 import toast from "react-hot-toast";
 import PageTitleForHome from "@/components/Shared/PageTitleForHome";
+import { TUser } from "@/Interface/TUser";
 
 const UserManagement = () => {
   const {
@@ -25,9 +26,15 @@ const UserManagement = () => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-
   if (error) {
-    return <p>Error loading users: {error.message}</p>;
+    const errorMessage =
+      "status" in error
+        ? "data" in error
+          ? (error.data as { message?: string }).message || "An error occurred"
+          : "An unknown error occurred"
+        : error.message || "An error occurred";
+
+    return <p>Error loading users: {errorMessage}</p>;
   }
 
   if (!users) {
@@ -43,10 +50,6 @@ const UserManagement = () => {
   const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
   const totalPages = Math.ceil(users.length / usersPerPage);
-
-  const handleClickPage = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -116,13 +119,13 @@ const UserManagement = () => {
               </tr>
             </thead>
             <tbody>
-              {currentUsers.map((user) => (
+              {currentUsers?.map((user: TUser) => (
                 <tr key={user._id} className="bg-white hover:bg-gray-50">
                   <td className="hidden sm:table-cell px-4 py-2 text-sm text-gray-500">
                     <img
                       alt="User Avatar"
                       className="h-16 w-16 rounded-md object-cover"
-                      src={user.image}
+                      src="{user.image}"
                     />
                   </td>
                   <td className="px-4 py-2 text-sm font-medium text-gray-900">

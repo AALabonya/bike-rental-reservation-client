@@ -8,10 +8,10 @@ import {
 import { RootState } from "../store";
 
 import toast from "react-hot-toast";
-import config from "@/config";
+// import config from "@/config";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${config.url}/api`,
+  baseUrl: `https://bike-rental-reservation-system-backend-eight.vercel.app/api`,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;

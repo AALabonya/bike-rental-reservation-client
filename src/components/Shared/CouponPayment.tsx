@@ -62,7 +62,7 @@ const CouponPayment = ({ rental, open, onClose }: CouponPaymentDialogProps) => {
         setDiscountCost(Math.max(finalAmount, 0));
 
         const rentalData = {
-          bikeId: rental._id,
+          bikeId: rental?._id,
           amount: finalAmount,
           isBooking: false,
           totalCost: rental?.totalCost,

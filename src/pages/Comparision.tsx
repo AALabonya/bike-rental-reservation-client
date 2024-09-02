@@ -19,7 +19,7 @@ export default function Comparison() {
   const { data: bikesData } = useGetAllBikesQuery(undefined);
   const [selectedBikes, setSelectedBikes] = useState<Bike[]>([]);
 
-  const bikes = bikesData?.data.map((bike: IBike) => ({
+  const bikes = bikesData?.data?.map((bike: IBike) => ({
     ...bike,
     _id: bike._id, // Keep the original _id if it's not a number
   }));

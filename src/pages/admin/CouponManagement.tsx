@@ -248,15 +248,14 @@ import toast from "react-hot-toast";
 import { CreateCouponModal } from "./CreateCoupon";
 import { useState } from "react";
 import { MoreHorizontal } from "lucide-react";
-import { ICoupon } from "@/Interface/TCoupon";
-import PageTitleForHome from "@/components/Shared/PageTitleForHome";
 
-export type TCoupon = {
+import PageTitleForHome from "@/components/Shared/PageTitleForHome";
+export interface TCoupon {
   _id: string;
+  title: string;
   coupon: string;
   discount: number;
-  title: string;
-};
+}
 
 const CouponManagement = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -294,7 +293,7 @@ const CouponManagement = () => {
     setOpenModal(true);
   };
 
-  const handleUpdateSubmit = async (data: ICoupon) => {
+  const handleUpdateSubmit = async (data: TCoupon) => {
     const loadingToast = toast.loading("Coupon is Updating...");
     console.log(data);
 
@@ -333,8 +332,6 @@ const CouponManagement = () => {
         <div className="flex justify-center items-center">
           <p>Loading...</p>
         </div>
-      ) : couponsData?.length < 1 || couponsData?.data?.success === false ? (
-        <div className="py-2 text-red-500">No data found</div>
       ) : (
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">

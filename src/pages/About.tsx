@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { LocateIcon, Phone } from "lucide-react";
 import { BiEnvelope } from "react-icons/bi";
+import { Link, NavLink } from "react-router-dom";
 export default function About() {
   const milestones = [
     {

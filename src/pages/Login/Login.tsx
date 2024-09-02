@@ -54,8 +54,15 @@ const Login: FC = () => {
 
       dispatch(setUser({ user: user, token: res?.token }));
     } catch (error) {
+      // Handle the error based on its expected structure
+      if (error && typeof error === "object" && "data" in error) {
+        const errorMessage = (error as { data: { message: string } })?.data
+          ?.message;
+        toast.error(errorMessage || "Something went wrong");
+      } else {
+        toast.error("Something went wrong");
+      }
       console.error("Login Error: ", error);
-      toast.error(error?.data?.message || "Something went wrong");
     }
   };
 
