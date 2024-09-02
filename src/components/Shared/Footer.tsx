@@ -59,10 +59,10 @@ const Footer = () => {
                     About Us
                   </NavLink>
                   <NavLink
-                    to={"/products"}
+                    to={"/bikes"}
                     className={"hover:text-green font-semibold"}
                   >
-                    Products
+                    All Bikes
                   </NavLink>
                 </div>
               </div>
@@ -85,7 +85,7 @@ const Footer = () => {
                     Privacy Policy
                   </NavLink>
                   <NavLink
-                    to={"/products"}
+                    to={"/"}
                     className={"hover:text-green font-semibold"}
                   >
                     Cookies

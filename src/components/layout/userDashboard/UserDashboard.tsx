@@ -181,7 +181,7 @@ export default function UserDashboard() {
       <div className="flex">
         {/* Sidebar of dashboard starts here */}
         <div
-          className={`side_bar min-h-screen fixed w-64 xl:min-w-[300px] z-[99999] text-white transition-all duration-300 ${
+          className={`side_bar min-h-screen fixed w-64 xl:min-w-[300px] z-[99999]  text-white transition-all duration-300 ${
             isSidebarOpen ? "-ml-64 lg:ml-0" : "lg:-ml-64 xl:-ml-[300px]"
           }`}
         >
@@ -189,7 +189,7 @@ export default function UserDashboard() {
         </div>
         {/* Main content of Dashboard starts here */}
         <div
-          className={`main_content w-svw transition-all duration-300 ${
+          className={`main_content w-svw transition-all duration-300 overflow-hidden ${
             isSidebarOpen ? "lg:ml-64 xl:ml-[300px]" : ""
           }`}
         >

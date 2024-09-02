@@ -309,6 +309,7 @@
 //     </div>
 //   );
 // }
+
 import { useState } from "react";
 import {
   MoveDownRight,
@@ -324,7 +325,13 @@ import { useNavigate } from "react-router-dom";
 import { useGetAllCouponsQuery } from "@/redux/features/couponApi";
 import { JackInTheBox } from "react-awesome-reveal";
 import PageTitleForHome from "@/components/Shared/PageTitleForHome";
-import { TCoupon } from "@/Interface/TCoupon";
+
+export interface TCoupon {
+  _id: string;
+  title: string;
+  coupon: string;
+  discount: number;
+}
 
 export default function WheelSpin() {
   const [selectedCoupon, setSelectedCoupon] = useState<TCoupon | null>(null);
@@ -419,7 +426,7 @@ export default function WheelSpin() {
                   }}
                 >
                   <div className="wheel-text">
-                    {coupon.discount > 0
+                    {coupon?.discount > 0
                       ? `${coupon.discount}% OFF`
                       : "No Luck"}
                   </div>
@@ -444,7 +451,7 @@ export default function WheelSpin() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
-                    {selectedCoupon.discount > 0
+                    {selectedCoupon?.discount > 0
                       ? `Discount: ${selectedCoupon.discount}%`
                       : "No Discount"}
                   </h3>
@@ -453,7 +460,7 @@ export default function WheelSpin() {
                   </p>
                 </div>
               </div>
-              {selectedCoupon.discount > 0 ? (
+              {selectedCoupon?.discount > 0 ? (
                 <button
                   className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded shadow"
                   onClick={() => copyToClipboard(selectedCoupon.coupon)}

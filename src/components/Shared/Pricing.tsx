@@ -83,7 +83,7 @@ export default function Pricing() {
             <p className="mb-5 text-white">
               Bikes & electric scooters for renting at low prices
             </p>
-            <div className="grid  grid-cols-3 lg:grid-cols-6 lg:gap-14 pt-12 gap-5 px-3">
+            <div className="grid  grid-cols-3 lg:grid-cols-6 lg:gap-14 pt-12 gap-5 px-3 mb-7">
               <div className="bg-white dark:text-black w-16 h-16 lg:w-32 lg:h-32 rounded-full flex justify-center items-center flex-col">
                 <GiFullMotorcycleHelmet className="lg:w-10 lg:h-10 mb-2 text-red-600 " />
                 <p className="text-[10px] lg:text-base">Helmets</p>
