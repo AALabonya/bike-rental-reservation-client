@@ -371,14 +371,14 @@ export default function WheelSpin() {
   const dataLength = couponsData?.data?.length || 0; // Safe fallback for length
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <JackInTheBox>
         <div className="lg:mt-12">
           <PageTitleForHome title="Spin Wheel" />
         </div>
       </JackInTheBox>
       <div className="flex flex-col items-center justify-center py-16 bg-white dark:bg-gray-900 p-4 overflow-hidden">
-        <div className="flex flex-col lg:flex-row lg:justify-around border p-2 gap-11 lg:gap-28 items-center w-full">
+        <div className="flex flex-col lg:flex-row justify-center lg:justify-around border p-2 gap-11 lg:gap-28 items-center w-full overflow-hidden">
           <motion.div
             initial="hidden"
             whileInView={"show"}
@@ -412,7 +412,7 @@ export default function WheelSpin() {
               {couponsData?.data?.map((coupon: TCoupon, index: number) => (
                 <div
                   key={index}
-                  className="wheel-segment "
+                  className="wheel-segment overflow-hidden"
                   style={{
                     transform: `rotate(${index * (360 / dataLength)}deg)`,
                     background: index % 2 === 0 ? "#FF6347" : "#00FF00",
