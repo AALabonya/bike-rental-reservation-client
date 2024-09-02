@@ -64,6 +64,16 @@ npm install
 
 npm run dev
 
+# Admin credentials:
+
+admin: aklima@example.com
+password: aklima123
+
+# users credentials :
+
+user: users@gmail.com
+password :123456
+
 github link:[bike-rental-reservation-client](https://github.com/AALabonya/bike-rental-reservation-client.git)
 
 Live Server Link: https://github.com/AALabonya/Bike-Rental-Reservation-System-Backend
